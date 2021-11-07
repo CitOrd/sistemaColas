@@ -29,10 +29,9 @@ public class Receptor {
         System.out.println("[*] esperando mensajes para salir presione Ctrl+C");
         
         DeliverCallback deliverCallback = (consumerTag, delivery) ->{
-            String mensaje = new String(delivery.getBody(), "UTF-8");
-            System.out.println("[X] recibido: "+mensaje+" ");            
-        };
-        
+            String mensaje = new String(delivery.getBody(),"UTF-8");
+            System.out.println("[X] recibido: " + mensaje+ " ");
+        };        
         channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag->{ });
     }
     
